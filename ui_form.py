@@ -30,56 +30,76 @@ class Ui_Form(object):
         self.groupBox_connection.setObjectName(u"groupBox_connection")
         self.gridLayout_connection = QGridLayout(self.groupBox_connection)
         self.gridLayout_connection.setObjectName(u"gridLayout_connection")
+        
         self.label_device = QLabel(self.groupBox_connection)
         self.label_device.setObjectName(u"label_device")
-
         self.gridLayout_connection.addWidget(self.label_device, 0, 0, 1, 1)
 
         self.lineEdit_device = QLineEdit(self.groupBox_connection)
         self.lineEdit_device.setObjectName(u"lineEdit_device")
-
         self.gridLayout_connection.addWidget(self.lineEdit_device, 0, 1, 1, 1)
+
+        self.label_endpoint = QLabel(self.groupBox_connection)
+        self.label_endpoint.setObjectName(u"label_endpoint")
+        self.gridLayout_connection.addWidget(self.label_endpoint, 1, 0, 1, 1)
+
+        self.lineEdit_endpoint = QLineEdit(self.groupBox_connection)
+        self.lineEdit_endpoint.setObjectName(u"lineEdit_endpoint")
+        self.gridLayout_connection.addWidget(self.lineEdit_endpoint, 1, 1, 1, 1)
 
         self.label_cert = QLabel(self.groupBox_connection)
         self.label_cert.setObjectName(u"label_cert")
-
-        self.gridLayout_connection.addWidget(self.label_cert, 1, 0, 1, 1)
+        self.gridLayout_connection.addWidget(self.label_cert, 2, 0, 1, 1)
 
         self.lineEdit_cert = QLineEdit(self.groupBox_connection)
         self.lineEdit_cert.setObjectName(u"lineEdit_cert")
-
-        self.gridLayout_connection.addWidget(self.lineEdit_cert, 1, 1, 1, 1)
+        self.gridLayout_connection.addWidget(self.lineEdit_cert, 2, 1, 1, 1)
 
         self.button_browse_cert = QPushButton(self.groupBox_connection)
         self.button_browse_cert.setObjectName(u"button_browse_cert")
-
-        self.gridLayout_connection.addWidget(self.button_browse_cert, 1, 2, 1, 1)
+        self.gridLayout_connection.addWidget(self.button_browse_cert, 2, 2, 1, 1)
 
         self.label_key = QLabel(self.groupBox_connection)
         self.label_key.setObjectName(u"label_key")
-
-        self.gridLayout_connection.addWidget(self.label_key, 2, 0, 1, 1)
+        self.gridLayout_connection.addWidget(self.label_key, 3, 0, 1, 1)
 
         self.lineEdit_key = QLineEdit(self.groupBox_connection)
         self.lineEdit_key.setObjectName(u"lineEdit_key")
-
-        self.gridLayout_connection.addWidget(self.lineEdit_key, 2, 1, 1, 1)
+        self.gridLayout_connection.addWidget(self.lineEdit_key, 3, 1, 1, 1)
 
         self.button_browse_key = QPushButton(self.groupBox_connection)
         self.button_browse_key.setObjectName(u"button_browse_key")
+        self.gridLayout_connection.addWidget(self.button_browse_key, 3, 2, 1, 1)
 
-        self.gridLayout_connection.addWidget(self.button_browse_key, 2, 2, 1, 1)
+        self.label_root = QLabel(self.groupBox_connection)
+        self.label_root.setObjectName(u"label_root")
+        self.gridLayout_connection.addWidget(self.label_root, 4, 0, 1, 1)
+
+        self.lineEdit_root = QLineEdit(self.groupBox_connection)
+        self.lineEdit_root.setObjectName(u"lineEdit_root")
+        self.gridLayout_connection.addWidget(self.lineEdit_root, 4, 1, 1, 1)
+
+        self.button_browse_root = QPushButton(self.groupBox_connection)
+        self.button_browse_root.setObjectName(u"button_browse_root")
+        self.gridLayout_connection.addWidget(self.button_browse_root, 4, 2, 1, 1)
+
+        self.label_port = QLabel(self.groupBox_connection)
+        self.label_port.setObjectName(u"label_port")
+        self.gridLayout_connection.addWidget(self.label_port, 5, 0, 1, 1)
+
+        self.lineEdit_port = QLineEdit(self.groupBox_connection)
+        self.lineEdit_port.setObjectName(u"lineEdit_port")
+        self.gridLayout_connection.addWidget(self.lineEdit_port, 5, 1, 1, 1)
 
         self.button_connect = QPushButton(self.groupBox_connection)
         self.button_connect.setObjectName(u"button_connect")
-
-        self.gridLayout_connection.addWidget(self.button_connect, 3, 1, 1, 1)
-
+        self.gridLayout_connection.addWidget(self.button_connect, 5, 2, 1, 1)
 
         self.verticalLayout.addWidget(self.groupBox_connection)
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
+        
         self.groupBox_edit = QGroupBox(Form)
         self.groupBox_edit.setObjectName(u"groupBox_edit")
         self.verticalLayout_edit = QVBoxLayout(self.groupBox_edit)
@@ -91,7 +111,6 @@ class Ui_Form(object):
 
         self.button_send = QPushButton(self.groupBox_edit)
         self.button_send.setObjectName(u"button_send")
-
         self.verticalLayout_edit.addWidget(self.button_send)
 
 
@@ -109,16 +128,13 @@ class Ui_Form(object):
 
         self.button_refresh = QPushButton(self.groupBox_readonly)
         self.button_refresh.setObjectName(u"button_refresh")
-
         self.verticalLayout_readonly.addWidget(self.button_refresh)
 
 
         self.horizontalLayout.addWidget(self.groupBox_readonly)
 
-
         self.verticalLayout.addLayout(self.horizontalLayout)
-
-
+        
         self.retranslateUi(Form)
 
         QMetaObject.connectSlotsByName(Form)
@@ -127,10 +143,14 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         self.groupBox_connection.setTitle(QCoreApplication.translate("Form", u"Device Connection", None))
         self.label_device.setText(QCoreApplication.translate("Form", u"Device Name:", None))
+        self.label_endpoint.setText(QCoreApplication.translate("Form", u"End-point:", None))
         self.label_cert.setText(QCoreApplication.translate("Form", u"Certificate File:", None))
         self.button_browse_cert.setText(QCoreApplication.translate("Form", u"Browse", None))
         self.label_key.setText(QCoreApplication.translate("Form", u"Key File:", None))
         self.button_browse_key.setText(QCoreApplication.translate("Form", u"Browse", None))
+        self.label_root.setText(QCoreApplication.translate("Form", u"Root CA File:", None))
+        self.button_browse_root.setText(QCoreApplication.translate("Form", u"Browse", None))
+        self.label_port.setText(QCoreApplication.translate("Form", u"Port:", None))
         self.button_connect.setText(QCoreApplication.translate("Form", u"Connect", None))
         self.groupBox_edit.setTitle(QCoreApplication.translate("Form", u"Editable Shadow Document", None))
         self.button_send.setText(QCoreApplication.translate("Form", u"Send", None))

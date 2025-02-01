@@ -1,3 +1,5 @@
 __pycache__
 .qtcreator
 venv
+tests/test_config_*.json
+*.pyproject.user

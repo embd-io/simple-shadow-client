@@ -1,6 +1,6 @@
 {
     "files": [
-        "widget.py",
+        "test-shadow-client-ui.py",
         "form.ui"
     ]
 }

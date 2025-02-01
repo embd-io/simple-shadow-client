@@ -1,0 +1,8 @@
+{
+    "endpoint": "<account>-ats.iot.<region>.amazonaws.com",
+    "port": 8883,
+    "clientId": "thing-name",
+    "cert": "path/to/certificate",
+    "key": "path/to/private-key",
+    "ca": "path/to/root-ca"
+}
