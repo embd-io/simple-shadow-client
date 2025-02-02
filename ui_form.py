@@ -152,9 +152,9 @@ class Ui_Form(object):
         self.button_browse_root.setText(QCoreApplication.translate("Form", u"Browse", None))
         self.label_port.setText(QCoreApplication.translate("Form", u"Port:", None))
         self.button_connect.setText(QCoreApplication.translate("Form", u"Connect", None))
-        self.groupBox_edit.setTitle(QCoreApplication.translate("Form", u"Editable Shadow Document", None))
+        self.groupBox_edit.setTitle(QCoreApplication.translate("Form", u"Desired State", None))
         self.button_send.setText(QCoreApplication.translate("Form", u"Send", None))
-        self.groupBox_readonly.setTitle(QCoreApplication.translate("Form", u"Reported Shadow Document", None))
+        self.groupBox_readonly.setTitle(QCoreApplication.translate("Form", u"Reported State", None))
         self.button_refresh.setText(QCoreApplication.translate("Form", u"Refresh", None))
         pass
     # retranslateUi

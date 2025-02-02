@@ -113,7 +113,7 @@
      <item>
       <widget class="QGroupBox" name="groupBox_edit">
        <property name="title">
-        <string>Editable Shadow Document</string>
+        <string>Desired State</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_edit">
         <item>
@@ -132,7 +132,7 @@
      <item>
       <widget class="QGroupBox" name="groupBox_readonly">
        <property name="title">
-        <string>Reported Shadow Document</string>
+        <string>Reported State</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_readonly">
         <item>

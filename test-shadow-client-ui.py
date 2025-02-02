@@ -43,10 +43,12 @@ class Widget(QtWidgets.QWidget, Ui_Form):
         self.cert_file_path = ""
         self.key_file_path = ""
         self.root_file_path = ""
-
-        self.connected = False
         self.device_name = ""
+        self.endpoint = ""
+        self.port = 0
         
+        self.connected = False
+
         self.button_browse_cert.clicked.connect(self.browse_cert_file)
         self.button_browse_key.clicked.connect(self.browse_key_file)
         self.button_browse_root.clicked.connect(self.browse_root_file)
@@ -109,10 +111,14 @@ class Widget(QtWidgets.QWidget, Ui_Form):
     def connect_to_broker(self):
         """"""
         try:
-            config = json.load(open("config.json", "r"))
-            self.cert_file_path = config['cert']
-            self.key_file_path = config['key']
-            self.shadow_client.connect(config['endpoint'], config['port'], self.cert_file_path, self.key_file_path, config['ca'], config['clientId'])
+            self.cert_file_path = self.lineEdit_cert.text()
+            self.key_file_path = self.lineEdit_key.text()
+            self.root_file_path = self.lineEdit_root.text()
+            self.device_name = self.lineEdit_device.text()
+            self.endpoint = self.lineEdit_endpoint.text()
+            self.port = int(self.lineEdit_port.text())
+            print(f"Connecting to broker at {self.endpoint}:{self.port}...")
+            self.shadow_client.connect(self.endpoint, self.port, self.cert_file_path, self.key_file_path, self.root_file_path, self.device_name)
             self.shadow_client.subscribe()
             self.connected = True
             self.button_connect.setPalette(QtGui.QPalette(QtGui.QColor("green")))
