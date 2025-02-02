@@ -39,14 +39,17 @@ class Widget(QtWidgets.QWidget, Ui_Form):
         """"""
         super().__init__()
         self.setupUi(self)
-        
+
         self.cert_file_path = ""
         self.key_file_path = ""
         self.root_file_path = ""
         self.device_name = ""
+        self.client_name = ""
         self.endpoint = ""
         self.port = 0
         
+        self.config = {}
+
         self.connected = False
 
         self.button_browse_cert.clicked.connect(self.browse_cert_file)
@@ -74,13 +77,13 @@ class Widget(QtWidgets.QWidget, Ui_Form):
     def load_default_config(self, filename):
         """"""
         try:
-            config = json.load(open(filename, "r"))
-            self.lineEdit_device.setText(config['clientId'])
-            self.lineEdit_endpoint.setText(config['endpoint'])
-            self.lineEdit_cert.setText(config['cert'])
-            self.lineEdit_key.setText(config['key'])
-            self.lineEdit_root.setText(config['ca'])
-            self.lineEdit_port.setText(str(config['port']))
+            self.config = json.load(open(filename, "r"))
+            self.lineEdit_device.setText(self.config['device'])
+            self.lineEdit_endpoint.setText(self.config['endpoint'])
+            self.lineEdit_cert.setText(self.config['cert'])
+            self.lineEdit_key.setText(self.config['key'])
+            self.lineEdit_root.setText(self.config['ca'])
+            self.lineEdit_port.setText(str(self.config['port']))
         except Exception as e:
             print(f"Failed to load default config: {e}")
 
@@ -114,11 +117,12 @@ class Widget(QtWidgets.QWidget, Ui_Form):
             self.cert_file_path = self.lineEdit_cert.text()
             self.key_file_path = self.lineEdit_key.text()
             self.root_file_path = self.lineEdit_root.text()
+            self.client_name = self.config['client']
             self.device_name = self.lineEdit_device.text()
             self.endpoint = self.lineEdit_endpoint.text()
             self.port = int(self.lineEdit_port.text())
             print(f"Connecting to broker at {self.endpoint}:{self.port}...")
-            self.shadow_client.connect(self.endpoint, self.port, self.cert_file_path, self.key_file_path, self.root_file_path, self.device_name)
+            self.shadow_client.connect(self.endpoint, self.client_name, self.device_name, self.port, self.cert_file_path, self.key_file_path, self.root_file_path)
             self.shadow_client.subscribe()
             self.connected = True
             self.button_connect.setPalette(QtGui.QPalette(QtGui.QColor("green")))

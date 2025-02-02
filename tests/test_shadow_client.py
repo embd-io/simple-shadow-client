@@ -33,7 +33,7 @@ class TestShadowClient:
 
     def test_shadow_client_connect(self):
         try:
-            self.shadow_client.connect(self.test_config['endpoint'], self.test_config['port'], self.test_config['cert'], self.test_config['key'], self.test_config['ca'], self.test_config['clientId'])
+            self.shadow_client.connect(self.test_config['endpoint'], self.test_config['client'], self.test_config['device'], self.test_config['port'], self.test_config['cert'], self.test_config['key'], self.test_config['ca'])
             sleep(1)
             self.shadow_client.disconnect(0)
             self.shadow_client.wait_for_disconnection()
@@ -43,7 +43,7 @@ class TestShadowClient:
 
     def test_shadow_client_subscribe(self):
         try:
-            self.shadow_client.connect(self.test_config['endpoint'], self.test_config['port'], self.test_config['cert'], self.test_config['key'], self.test_config['ca'], self.test_config['clientId'])
+            self.shadow_client.connect(self.test_config['endpoint'], self.test_config['client'], self.test_config['device'], self.test_config['port'], self.test_config['cert'], self.test_config['key'], self.test_config['ca'])
             self.shadow_client.subscribe()
             sleep(1)
         except Exception as e:
@@ -51,7 +51,7 @@ class TestShadowClient:
 
     def test_shadow_client_get(self):
         try:
-            self.shadow_client.connect(self.test_config['endpoint'], self.test_config['port'], self.test_config['cert'], self.test_config['key'], self.test_config['ca'], self.test_config['clientId'])
+            self.shadow_client.connect(self.test_config['endpoint'], self.test_config['client'], self.test_config['device'], self.test_config['port'], self.test_config['cert'], self.test_config['key'], self.test_config['ca'])
             self.shadow_client.subscribe()
             self.shadow_client.fetch_shadow_document()
             sleep(1)
@@ -60,7 +60,7 @@ class TestShadowClient:
 
     def test_shadow_client_update(self):
         try:
-            self.shadow_client.connect(self.test_config['endpoint'], self.test_config['port'], self.test_config['cert'], self.test_config['key'], self.test_config['ca'], self.test_config['clientId'])
+            self.shadow_client.connect(self.test_config['endpoint'], self.test_config['client'], self.test_config['device'], self.test_config['port'], self.test_config['cert'], self.test_config['key'], self.test_config['ca'])
             self.shadow_client.subscribe()
             self.shadow_client.fetch_shadow_document()
             sleep(1)

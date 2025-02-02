@@ -35,6 +35,8 @@ class ShadowClient:
     
     def __init__(self):
         """"""
+        self.client_id = ""
+        
         self.mqtt_connection: mqtt.Connection = None
         self.shadow_client: iotshadow.IotShadowClient = None
         self.device_name: str = ""
@@ -44,9 +46,10 @@ class ShadowClient:
 
         self.document: iotshadow.ShadowStateWithDelta = None
 
-    def connect(self, endpoint: str, port: int, cert: str, key: str, ca: str, clientId: str):
+    def connect(self, endpoint: str, client: str, device: str, port: int, cert: str, key: str, ca: str):
         """"""
-        self.device_name = clientId
+        self.device_name = device
+        self.client_id = client
         try:
             self.mqtt_connection = mqtt_connection_builder.mtls_from_path(
                 endpoint=endpoint,
@@ -54,7 +57,7 @@ class ShadowClient:
                 cert_filepath=cert,
                 pri_key_filepath=key,
                 ca_filepath=ca,
-                client_id=clientId,
+                client_id=client,
                 clean_session=False,
                 keep_alive_secs=30,
                 http_proxy_options=None)
